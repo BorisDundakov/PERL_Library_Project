@@ -1,0 +1,16 @@
+[
+  {
+    "n_pages": "202",
+    "ISBN": "1234567892",
+    "author": "a",
+    "title": "a",
+    "publication_date": "20.04.2002"
+  },
+  {
+    "ISBN": "1234567890",
+    "author": "a",
+    "n_pages": "144",
+    "title": "a",
+    "publication_date": "20/05/2001"
+  }
+]
