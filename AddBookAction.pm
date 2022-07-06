@@ -51,6 +51,12 @@ sub getName {
     # $_[0]->{$name};
 }
 
+sub getClassName {
+    return $_[0];
+    # $_[0]->{$name};
+}
+
+
 sub shouldExit{
     return(0);
 }

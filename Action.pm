@@ -4,7 +4,7 @@ use warnings;
 package Action;
 
 sub new {
-    my $class = shift;
+    my $class = $_[0];
     my $self = {};
     bless $self, $class;
     return $self;
