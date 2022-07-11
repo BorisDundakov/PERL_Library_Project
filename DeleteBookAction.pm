@@ -7,7 +7,7 @@ use Action;
 our @ISA = qw(Action);
 
 sub execute {
-    my $delete_type = BookView->findBook();
+    my $delete_type = BookView->find_book();
     if (defined($delete_type)) {
         my $value = BookView->search();
         my $lib_args = ([ $delete_type, $value ]);
@@ -23,18 +23,18 @@ sub execute {
 
 }
 
-sub getName {
+sub get_name {
     #my $name =  $_[0];
     my $name = "Delete book";
     return($name);
 }
 
-sub getClassName {
+sub get_class_name {
     return $_[0];
     # $_[0]->{$name};
 }
 
-sub shouldExit{
+sub should_exit{
     return(0);
 }
 

@@ -18,10 +18,10 @@ sub execute {
         my $value = BookView->search();
         my $book = Library->edit_book($search_type, $value);
         if (!defined($book)) {
-            print(BookView->noBookFound);
+            print(BookView->display_no_book_found);
             return ();
         }
-        my @res = BookView->editBook($book);
+        my @res = BookView->edit_book($book);
         # горното да е един обект
         my $result_to_add = $res[0];
         my $result_to_delete = $res[1];
@@ -47,16 +47,16 @@ sub execute {
 }
 
 
-sub getName {
+sub get_name {
     my $name = "Edit book";
     return ($name);
 }
 
-sub getClassName {
+sub get_class_name {
     return $_[0];
     # $_[0]->{$name};
 }
-sub shouldExit{
+sub should_exit{
     return(0);
 }
 

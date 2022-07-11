@@ -12,17 +12,17 @@ sub execute{
     exit();
 }
 
-sub getName {
+sub get_name {
     my $name =  "Exit";
     return($name);
 }
 
-sub getClassName {
+sub get_class_name {
     return $_[0];
     # $_[0]->{$name};
 }
 
-sub shouldExit{
+sub should_exit{
     return(1);
 }
 

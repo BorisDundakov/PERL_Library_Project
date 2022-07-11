@@ -17,24 +17,25 @@ our @ISA = qw(Action);
 sub execute {
     my $bookView = BookView->new();
 
-    my @book_details = $bookView->createBook();
+    my @book_details = $bookView->create_book();
     my $book_instance = Book->new(@book_details);
 
     my $library = Library->new();
-    $library->pull_database();
+    $library->check_for_database();
+    #library->load_database() instead??
 
-    $bookView->displayBook($book_instance);
-    my $answer = $bookView->addBookDecision($book_instance);
+    $bookView->display_book($book_instance);
+    my $answer = $bookView->add_book_decision($book_instance);
 
     # TODO: Code part 2: Database stuff, update information
 
     if ($answer eq ("Y")) {
-        my %res = $library->checkBookDuplicate($book_instance);
+        my %res = $library->check_book_duplicate($book_instance);
         if ($res{'is_duplicate'} eq "True") {
             print("Book with ISBN $res{'ISBN'} already added to the library\n");
         }
         else {
-            $library->addBook($book_instance);
+            $library->add_book($book_instance);
             print("Book successfully added to the library!\n")
         }
 
@@ -45,19 +46,19 @@ sub execute {
 }
 
 #package AddBookAction;
-sub getName {
+sub get_name {
     my $name = "Add a book";
     return $name;
     # $_[0]->{$name};
 }
 
-sub getClassName {
+sub get_class_name {
     return $_[0];
     # $_[0]->{$name};
 }
 
 
-sub shouldExit{
+sub should_exit{
     return(0);
 }
 

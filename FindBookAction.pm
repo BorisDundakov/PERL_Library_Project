@@ -13,7 +13,7 @@ our @ISA = qw(Action);
 # КОДЪТ НАДОЛУ НЕ Е ВАЖЕН И НЕ Е ПРЕРАБОТВАН!
 
 sub execute {
-    my $search_type = BookView->findBook();
+    my $search_type = BookView->find_book();
     # find_book method да се choose_find_book method
     if (defined($search_type)) {
         my $value = BookView->search();
@@ -21,7 +21,7 @@ sub execute {
         my $lib_args = ([$search_type, $value]);
         my $book = Library->find_book($lib_args);
         if (defined($book)) {
-            BookView->displayBook($book);
+            BookView->display_book($book);
         }
         else{
             print("No such book found!\n");
@@ -33,17 +33,17 @@ sub execute {
     }
 }
 
-sub getName {
+sub get_name {
     my $name = "Find book";
     return ($name);
 }
 
-sub getClassName {
+sub get_class_name {
     return $_[0];
     # $_[0]->{$name};
 }
 
-sub shouldExit{
+sub should_exit{
     return(0);
 }
 

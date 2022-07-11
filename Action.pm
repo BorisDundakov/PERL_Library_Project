@@ -13,7 +13,7 @@ sub new {
 sub execute($) {
 }
 
-sub shouldExit() {
+sub should_exit() {
     # метод наследен от всички наследници на action (polymorphism):
     # AddBookAction, EditBookAction, FindBookAction, DeleteAction, ExitAction
     # returns 1/0

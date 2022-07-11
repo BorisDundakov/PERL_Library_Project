@@ -38,7 +38,7 @@ sub selectAction() {
     my $num = 1;
 
     foreach my $action (@actions) {
-        print($num, " - ", $action->getName(), "\n");
+        print($num, " - ", $action->get_name(), "\n");
         $num += 1;
 
     }
@@ -72,10 +72,7 @@ sub selectAction() {
 
     }
 
-
-    # добави валидация тук!
-
-    my $action = $actions[$selectedIndex - 1]->getClassName();
+    my $action = $actions[$selectedIndex - 1]->get_class_name();
     return $action;
 }
 

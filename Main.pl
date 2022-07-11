@@ -19,7 +19,7 @@ while($exit_condition == 0){
 
     my $class_instance = $menu->selectAction();
     $class_instance->execute();
-    $exit_condition = $class_instance->shouldExit();
+    $exit_condition = $class_instance->should_exit();
 }
 
 

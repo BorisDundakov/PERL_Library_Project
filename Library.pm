@@ -21,7 +21,7 @@ sub create_database {
     close FileHandle;
 }
 
-sub pull_database {
+sub check_for_database {
     my $filename = 'C:\Users\Bobi\Documents\Desktop\Perl Scripts\Object Oriented Library Project - Perl Objects - Latest\Database.json';
     if (-e $filename) {
 
@@ -31,7 +31,8 @@ sub pull_database {
     }
 }
 
-sub open_database {
+sub decode_database {
+    # do we really need a subroutine for that?
     my $json;
     {
         open(my $fh, 'Database.json') or die("can't open Database.json\n");
@@ -44,7 +45,7 @@ sub open_database {
 
 }
 
-sub checkBookDuplicate($) {
+sub check_book_duplicate($) {
     my $is_duplicate = "False";
     my $book_instance = $_[1];
 
@@ -58,7 +59,7 @@ sub checkBookDuplicate($) {
             # ако книгите се качват в базата като обекти от тип Book=Hash, то JSON ги запазва като null;
             #book -> Book = {HASH}
             #working with perl Objects instead of just hashes
-            $book->setISBN($current_book->{'ISBN'});
+            $book->set_ISBN($current_book->{'ISBN'});
             if($book->{'ISBN'} eq $book_instance->{'ISBN'}) {
                 $is_duplicate = "True";
             }
@@ -85,7 +86,7 @@ sub checkBookDuplicate($) {
 
 
 
-sub addBook() {
+sub add_book() {
     my $coder = JSON->new->utf8;
 
     $coder->allow_blessed();
@@ -127,7 +128,7 @@ sub find_book {
     my $indicator = $search_criteria[0][0];
     my $value = $search_criteria[0][1];
 
-    my $decoded = open_database();
+    my $decoded = decode_database();
 
     my @books_list = $decoded;
     foreach my $vals (@books_list) {
@@ -145,7 +146,7 @@ sub edit_book {
     my $indicator = $_[1];
     my $value = $_[2];
 
-    my $decoded = open_database();
+    my $decoded = decode_database();
 
     my @books_list = $decoded;
     foreach my $vals (@books_list) {
@@ -168,7 +169,7 @@ sub delete_book() {
     my $indicator = $search_criteria[0][0];
     my $value = $search_criteria[0][1];
 
-    my $decoded = open_database();
+    my $decoded = decode_database();
     foreach my $vals (@$decoded) {
         $del_counter += 1;
         if (!defined($indicator)) {

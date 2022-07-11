@@ -12,7 +12,7 @@ sub new {
     return $self;
 }
 
-sub createBook {
+sub create_book {
     my @attr;
 
     my $title;
@@ -29,7 +29,7 @@ sub createBook {
         print("Enter a book title:\n");
         $title = <STDIN>;
         chomp($title);
-        my $validation_result = $book->setTitle($title);
+        my $validation_result = $book->set_title($title);
         $title_validation = $validation_result;
 
         if (!defined($validation_result)) {
@@ -45,7 +45,7 @@ sub createBook {
         print("Enter a book author:\n");
         $author = <STDIN>;
         chomp($author);
-        my $validation_result = $book->setAuthor($author);
+        my $validation_result = $book->set_author($author);
         $author_validation = $author;
 
         if (!defined($validation_result)) {
@@ -61,7 +61,7 @@ sub createBook {
         print("Enter publication date:\n");
         $pub_date = <STDIN>;
         chomp($pub_date);
-        my $validation_result = $book->setPublication_date($pub_date);
+        my $validation_result = $book->set_publication_date($pub_date);
         $date_validation = $pub_date;
 
         if (!defined($validation_result)) {
@@ -76,7 +76,7 @@ sub createBook {
         print("Enter number of pages:\n");
         $pages = <STDIN>;
         chomp($pages);
-        my $validation_result = $book->setN_pages($pages);
+        my $validation_result = $book->set_n_pages($pages);
         $pages_validation = $pages;
         if (!defined($validation_result)) {
             print("Invalid value for pages! Pages must be a number!\n");
@@ -90,7 +90,7 @@ sub createBook {
         print("Enter a book ISBN:\n");
         $isbn = <STDIN>;
         chomp($isbn);
-        my $validation_result = $book->setISBN($isbn);
+        my $validation_result = $book->set_ISBN($isbn);
         $isbn_validation = $isbn;
         if (!defined($validation_result)) {
             print("Invalid ISBN! ISBN must be 10 or 13 symbols long and contain only numbers!\n");
@@ -108,7 +108,7 @@ sub createBook {
     return (@attr);
 
 }
-sub displayBook($) {
+sub display_book($) {
     print("Book Details:\n");
     print("Author:\t$_[1]->{'author'}\n");
     print("Title:\t$_[1]->{'title'}\n");
@@ -119,7 +119,7 @@ sub displayBook($) {
 
 }
 
-sub addBookDecision($) {
+sub add_book_decision($) {
     my $answer = "";
     while() {
         print("Add new book with the following details? (Type Y or N)\n");
@@ -137,17 +137,17 @@ sub addBookDecision($) {
 
 }
 
-sub noBookFound {
+sub display_no_book_found {
     return ("No book with the corresponding parameters found!\n")
 }
 
 
-sub editBook($) {
+sub edit_book($) {
     if (!defined($_[1])) {
         print("No such book found!\n");
         return(undef);
     }
-    displayBook($_[1]);
+    display_book($_[1]);
 
 
 
@@ -228,7 +228,7 @@ sub editBook($) {
 
     return (@res);
 }
-# sub findBook {
+# sub find_book {
 #     print("Which criteria do you want to search by?\n");
 #     print("Type the corresponding letter ONLY! :\n");
 #     print("a) Author\n");
