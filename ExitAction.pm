@@ -12,14 +12,9 @@ sub execute{
     exit();
 }
 
-sub get_name {
+sub display_name {
     my $name =  "Exit";
     return($name);
-}
-
-sub get_class_name {
-    return $_[0];
-    # $_[0]->{$name};
 }
 
 sub should_exit{

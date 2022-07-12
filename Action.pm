@@ -13,6 +13,14 @@ sub new {
 sub execute($) {
 }
 
+sub display_name {
+}
+
+sub get_class_name {
+    return $_[0];
+}
+
+
 sub should_exit() {
     # метод наследен от всички наследници на action (polymorphism):
     # AddBookAction, EditBookAction, FindBookAction, DeleteAction, ExitAction

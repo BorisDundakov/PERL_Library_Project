@@ -46,14 +46,9 @@ sub execute {
 }
 
 #package AddBookAction;
-sub get_name {
+sub display_name {
     my $name = "Add a book";
     return $name;
-    # $_[0]->{$name};
-}
-
-sub get_class_name {
-    return $_[0];
     # $_[0]->{$name};
 }
 

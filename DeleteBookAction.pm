@@ -23,15 +23,10 @@ sub execute {
 
 }
 
-sub get_name {
+sub display_name {
     #my $name =  $_[0];
     my $name = "Delete book";
     return($name);
-}
-
-sub get_class_name {
-    return $_[0];
-    # $_[0]->{$name};
 }
 
 sub should_exit{

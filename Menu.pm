@@ -38,7 +38,7 @@ sub selectAction() {
     my $num = 1;
 
     foreach my $action (@actions) {
-        print($num, " - ", $action->get_name(), "\n");
+        print($num, " - ", $action->display_name(), "\n");
         $num += 1;
 
     }
