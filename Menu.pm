@@ -42,30 +42,28 @@ sub selectAction() {
         $num += 1;
 
     }
-#    print "Enter action number:\n";
 
-
-
-
+    my $count_actions = @actions;
 
     print "Enter action number:\n";
 
     my $selectedIndex = -1;
-    my $action_validation = "";
+    my $action_validation = undef;
 
-    while ($action_validation eq ""){
+    while (!defined $action_validation){
         $selectedIndex = <STDIN>;
         chomp($selectedIndex);
 
-        # TODO: Валидацията да позволява да се добавят нови actions, без да се променя regex-a
 
-        $action_validation = $selectedIndex =~ /[1-5]/;
+        my $pattern = join '|', 0 .. $count_actions;
 
-        if ($action_validation eq "") {
-            print("Please enter a valid number!\n");
-            $action_validation = "";
-
+        if ($selectedIndex =~m/^(?:$pattern)$/ ){
+            $action_validation = 1;
         }
+        else{
+            print("Please enter a valid number!\n");
+        }
+
 
     }
 
