@@ -31,7 +31,7 @@ sub check_for_database {
     }
 }
 
-sub decode_database {
+sub load_library_as_hash {
     # do we really need a subroutine for that?
     my $json;
     {
@@ -128,7 +128,7 @@ sub find_book {
     my $indicator = $search_criteria[0][0];
     my $value = $search_criteria[0][1];
 
-    my $decoded = decode_database();
+    my $decoded = load_library_as_hash();
 
     my @books_list = $decoded;
     foreach my $vals (@books_list) {
@@ -146,7 +146,7 @@ sub edit_book {
     my $indicator = $_[1];
     my $value = $_[2];
 
-    my $decoded = decode_database();
+    my $decoded = load_library_as_hash();
 
     my @books_list = $decoded;
     foreach my $vals (@books_list) {
@@ -169,7 +169,7 @@ sub delete_book() {
     my $indicator = $search_criteria[0][0];
     my $value = $search_criteria[0][1];
 
-    my $decoded = decode_database();
+    my $decoded = load_library_as_hash();
     foreach my $vals (@$decoded) {
         $del_counter += 1;
         if (!defined($indicator)) {
