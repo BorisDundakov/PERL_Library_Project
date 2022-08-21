@@ -45,12 +45,7 @@ sub selectAction() {
 #    print "Enter action number:\n";
 
 
-    sub setAuthor{
-        my($self, $author) = @_;
-        my $author_validation = $author =~ /^(?!\s*$).+/;
-        $self->{author} = $author if (($author_validation) eq! "");
-        return($self->{author});
-    }
+
 
 
     print "Enter action number:\n";
@@ -61,6 +56,8 @@ sub selectAction() {
     while ($action_validation eq ""){
         $selectedIndex = <STDIN>;
         chomp($selectedIndex);
+
+        # TODO: Валидацията да позволява да се добавят нови actions, без да се променя regex-a
 
         $action_validation = $selectedIndex =~ /[1-5]/;
 

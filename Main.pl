@@ -17,9 +17,9 @@ my $menu = Menu->new();
 my $exit_condition = 0;
 while($exit_condition == 0){
 
-    my $class_instance = $menu->selectAction();
-    $class_instance->execute();
-    $exit_condition = $class_instance->should_exit();
+    my $action = $menu->selectAction();
+    $action->execute();
+    $exit_condition = $action->should_exit();
 }
 
 
