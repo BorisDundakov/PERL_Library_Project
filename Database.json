@@ -1,23 +1,37 @@
 [
   {
-    "author": "a",
-    "n_pages": "202",
+    "title": "a",
     "ISBN": "1234567892",
+    "author": "a",
     "publication_date": "20.04.2002",
-    "title": "a"
+    "n_pages": "202"
   },
   {
     "author": "a",
-    "n_pages": "144",
-    "ISBN": "1234567890",
     "publication_date": "20/05/2001",
+    "ISBN": "1234567890",
+    "title": "a",
+    "n_pages": "144"
+  },
+  {
+    "n_pages": "209",
+    "title": "a",
+    "publication_date": "20.09.2009",
+    "author": "b",
+    "ISBN": "2092092091"
+  },
+  {
+    "n_pages": "909",
+    "publication_date": "20/02/1999",
+    "ISBN": "1234567893",
+    "author": "a",
     "title": "a"
   },
   {
-    "author": "b",
-    "n_pages": "209",
-    "ISBN": "2092092091",
-    "publication_date": "20.09.2009",
+    "n_pages": "204",
+    "author": "a",
+    "ISBN": "4044044044",
+    "publication_date": "20/04/2004",
     "title": "a"
   }
 ]

@@ -29,9 +29,10 @@ sub execute {
     # TODO: Code part 2: Database stuff, update information
 
     if ($answer eq ("Y")) {
-        my %res = $library->check_book_duplicate($book_instance);
-        if ($res{'is_duplicate'} eq "True") {
-            print("Book with ISBN $res{'ISBN'} already added to the library\n");
+
+        my $duplicate_test = $library->check_book_duplicate($book_instance);
+        if (defined($duplicate_test)) {
+            print("Book with ISBN $book_instance->{'ISBN'} already added to the library\n");
         }
         else {
             $library->add_book($book_instance);

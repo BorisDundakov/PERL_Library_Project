@@ -78,12 +78,11 @@ sub check_book_duplicate($) {
     my $new_book = $_[1];
     foreach my $current_book (@books) {
         if ($current_book->{'ISBN'} eq $new_book->{'ISBN'}){
-            $is_duplicate = "True";
+            $is_duplicate = 1;
             last;
         }
     }
-    my %book_details = (is_duplicate => $is_duplicate, ISBN => $new_book->{'ISBN'});
-    return (%book_details);
+    return($is_duplicate);
 
 }
 
