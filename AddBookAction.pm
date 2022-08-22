@@ -15,14 +15,13 @@ our @ISA = qw(Action);
 
 
 sub execute {
+    my $library = Library->new();
+    $library->check_for_database();
+
     my $bookView = BookView->new();
 
     my @book_details = $bookView->create_book();
     my $book_instance = Book->new(@book_details);
-
-    my $library = Library->new();
-    $library->check_for_database();
-    #library->load_database() instead??
 
     $bookView->display_book($book_instance);
     my $answer = $bookView->add_book_decision($book_instance);

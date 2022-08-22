@@ -45,45 +45,47 @@ sub load_library_as_hash {
 
 }
 
+sub library_to_book_objects($) {
+    my @books_array;
+
+    my @objects_array = load_library_as_hash();
+    my $index = 0;
+    while (defined($objects_array[0][$index]))
+    {
+
+        # a perl_object is a regular hash
+        # transforming regular hash to a hash of type Book
+
+        my $author = $objects_array[0][$index]{'author'};
+        # extracting the values just like from a dictionary
+        my $title = $objects_array[0][$index]{'title'};
+        my $publication_date = $objects_array[0][$index]{'publication_date'};
+        my $n_pages = $objects_array[0][$index]{'n_pages'};
+        my $ISBN = $objects_array[0][$index]{'ISBN'};
+
+        my $book_object = Book->new($author, $title, $publication_date, $n_pages, $ISBN);
+        $index += 1;
+        push(@books_array,$book_object);
+
+    }
+    return(@books_array)
+}
+
 sub check_book_duplicate($) {
-    my $is_duplicate = "False";
-    my $book_instance = $_[1];
-
-    try {
-        my $perl_list_of_books = json_file_to_perl('Database.json');
-
-        #TODO-> perl_list_of_books = {REF TO ARRAY}; it should be "{REF TO ARRAY OF BOOKS??}"
-        foreach my $current_book (@$perl_list_of_books) {
-            my $book = Book->new();
-            # няма как да се свалят книгите и директно да са обекти от тип Book=Hash.
-            # ако книгите се качват в базата като обекти от тип Book=Hash, то JSON ги запазва като null;
-            #book -> Book = {HASH}
-            #working with perl Objects instead of just hashes
-            $book->set_ISBN($current_book->{'ISBN'});
-            if($book->{'ISBN'} eq $book_instance->{'ISBN'}) {
-                $is_duplicate = "True";
-            }
+    my $lib = load_library_as_hash();
+    my @books = library_to_book_objects($lib);
+    my $is_duplicate = undef;
+    my $new_book = $_[1];
+    foreach my $current_book (@books) {
+        if ($current_book->{'ISBN'} eq $new_book->{'ISBN'}){
+            $is_duplicate = "True";
+            last;
         }
-        # VARIANT 2
-        # perl_list_of_books = {REF TO ARRAY};
-        # current_book -> {HASH}
-        foreach my $current_book (@$perl_list_of_books) {
-            if($current_book->{'ISBN'} eq $book_instance->{'ISBN'}) {
-                $is_duplicate = "True";
-            }
-        }
-
-
-        my %book_details = (is_duplicate => $is_duplicate, ISBN => $book_instance->{'ISBN'});
-        return (%book_details);
-    };
-    my % book_details = (is_duplicate => $is_duplicate, ISBN => $book_instance->{'ISBN'});
+    }
+    my %book_details = (is_duplicate => $is_duplicate, ISBN => $new_book->{'ISBN'});
     return (%book_details);
 
 }
-
-
-
 
 
 sub add_book() {
@@ -94,7 +96,7 @@ sub add_book() {
     sub TO_JSON {return { %{shift()} };}
     unbless($book_instance);
 
-    eval{
+    eval {
         #JSON file stores a list of hashes, not a list of objects??
         #that's why I unbless the book instance => it makes it a regular hash NOW, not a Book=HASH
         #it adds a null object if i don't unbless it!!
@@ -108,7 +110,7 @@ sub add_book() {
         print $fh ($updated_database);
         close($fh);
 
-    } or eval{
+    } or eval {
 
         # output is the first Database entry in this case. The Database was completely empty before the operation
         my $output = $coder->encode($book_instance);
