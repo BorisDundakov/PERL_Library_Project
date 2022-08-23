@@ -55,6 +55,8 @@ sub selectAction() {
         chomp($selectedIndex);
 
 
+        # dynamically adding actions so that we don't use fix regex (1-5)
+
         my $pattern = join '|', 0 .. $count_actions;
 
         if ($selectedIndex =~m/^(?:$pattern)$/ ){

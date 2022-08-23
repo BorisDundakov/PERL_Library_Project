@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-no warnings qw( experimental::smartmatch );
+no warnings qw(experimental::smartmatch);
 
 use Book;
 package BookView;
@@ -13,7 +13,6 @@ sub new {
 }
 
 sub create_book {
-    my @attr;
 
     my $title;
     my $author;
@@ -23,9 +22,8 @@ sub create_book {
 
     my $book = Book->new();
 
-
     my $title_validation = "";
-    while ($title_validation eq ""){
+    while ($title_validation eq "") {
         print("Enter a book title:\n");
         $title = <STDIN>;
         chomp($title);
@@ -41,7 +39,7 @@ sub create_book {
     }
 
     my $author_validation = "";
-    while ($author_validation eq ""){
+    while ($author_validation eq "") {
         print("Enter a book author:\n");
         $author = <STDIN>;
         chomp($author);
@@ -57,7 +55,7 @@ sub create_book {
     }
 
     my $date_validation = "";
-    while ($date_validation eq ""){
+    while ($date_validation eq "") {
         print("Enter publication date:\n");
         $pub_date = <STDIN>;
         chomp($pub_date);
@@ -72,7 +70,7 @@ sub create_book {
     }
 
     my $pages_validation = "";
-    while($pages_validation eq ""){
+    while ($pages_validation eq "") {
         print("Enter number of pages:\n");
         $pages = <STDIN>;
         chomp($pages);
@@ -86,7 +84,7 @@ sub create_book {
     }
 
     my $isbn_validation = "";
-    while($isbn_validation eq ""){
+    while ($isbn_validation eq "") {
         print("Enter a book ISBN:\n");
         $isbn = <STDIN>;
         chomp($isbn);
@@ -98,14 +96,7 @@ sub create_book {
         }
     }
 
-
-    push(@attr, ($author));
-    push(@attr, ($title));
-    push(@attr, ($pub_date));
-    push(@attr, ($pages));
-    push(@attr, ($isbn));
-
-    return (@attr);
+    return ($book);
 
 }
 sub display_book($) {
@@ -121,19 +112,22 @@ sub display_book($) {
 
 sub add_book_decision($) {
     my $answer = "";
-    while() {
+    while () {
         print("Add new book with the following details? (Type Y or N)\n");
         $answer = <STDIN>;
         $answer =~ s/\R//g;
         $answer = uc($answer);
-        if ($answer eq "Y" or $answer eq "N"){
-            return ($answer);
-        }
-        else{
-            print("Please type 'Y' or 'N'\n");
-        }
-    }
 
+        SWITCH: {
+
+            if ($answer eq "Y") {return (1)}
+            if ($answer eq "N") {return (undef)}
+            else {
+                print("Please type 'Y' or 'N'\n");
+            }
+        }
+
+    }
 
 }
 
@@ -145,11 +139,9 @@ sub display_no_book_found {
 sub edit_book($) {
     if (!defined($_[1])) {
         print("No such book found!\n");
-        return(undef);
+        return (undef);
     }
     display_book($_[1]);
-
-
 
     my $old_title = $_[1]->{'title'};
     my $old_author = $_[1]->{'author'};
@@ -247,11 +239,11 @@ sub edit_book($) {
 #
 # }
 
-sub search{
-  print("Enter your value here: ");
+sub search {
+    print("Enter your value here: ");
     my $val = <STDIN>;
     $val =~ s/\R//g;
-    return($val);
+    return ($val);
 }
 
 1;
