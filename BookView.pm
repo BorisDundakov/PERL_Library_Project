@@ -131,6 +131,19 @@ sub confirm_add_book($) {
 
 }
 
+sub display_notification($){
+    my $confirmation_result = $_[0];
+    if(!defined($confirmation_result)){
+        print("Operation cancelled - Did not add the book to the library!\n")
+    }
+    print("Book successfully added to the library!\n")
+}
+
+sub display_successful_addition($){
+    my $book_ISBN = $_[0];
+    print("Book with ISBN $book_ISBN already added to the library\n");
+}
+
 sub display_no_book_found {
     return ("No book with the corresponding parameters found!\n")
 }

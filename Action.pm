@@ -14,6 +14,9 @@ sub execute($) {
 }
 
 sub display_name {
+    # метод наследен от всички наследници на action (polymorphism):
+    # AddBookAction, EditBookAction, FindBookAction, DeleteAction, ExitAction
+    # returns menu name
 }
 
 sub get_class_name {

@@ -16,7 +16,11 @@ our @ISA = qw(Action);
 
 sub execute {
     my $library = Library->new();
-    $library->check_for_database();
+    my $existing_database = $library->check_for_database();
+
+    if(!defined($existing_database)){
+        $library->create_database();
+    }
 
     my $ui = BookView->new();
 
@@ -34,8 +38,8 @@ sub execute {
     #1.2 Ако данните от портебителя са потвърдени
     if (defined($add_book_confirmed)) {
         #1.3 Тест за дубликация (вече налична такава книга)
-        my $duplicate_test = $library->check_book_duplicate($book_object);
-        if (defined($duplicate_test)) {
+        my $book_is_duplicate = $library->check_book_duplicate($book_object);
+        if (defined($book_is_duplicate)) {
             print("Book with ISBN $book_object->{'ISBN'} already added to the library\n");
         }
         else {

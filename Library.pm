@@ -24,11 +24,9 @@ sub create_database {
 sub check_for_database {
     my $filename = 'C:\Users\Bobi\Documents\Desktop\Perl Scripts\Object Oriented Library Project - Perl Objects - Latest\Database.json';
     if (-e $filename) {
-
+        return(0)
     }
-    else {
-        create_database();
-    }
+    return(1)
 }
 
 sub load_library_as_hash {
