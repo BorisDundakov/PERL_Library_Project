@@ -12,7 +12,7 @@ sub new {
     return $self;
 }
 
-sub create_book {
+sub collect_book_info {
 
     my $title;
     my $author;
@@ -110,7 +110,7 @@ sub display_book($) {
 
 }
 
-sub add_book_decision($) {
+sub confirm_add_book($) {
     my $answer = "";
     while () {
         print("Add new book with the following details? (Type Y or N)\n");

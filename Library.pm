@@ -72,10 +72,11 @@ sub library_to_book_objects($) {
 }
 
 sub check_book_duplicate($) {
+    my $new_book = $_[1];
     my $lib = load_library_as_hash();
     my @books = library_to_book_objects($lib);
     my $is_duplicate = undef;
-    my $new_book = $_[1];
+
     foreach my $current_book (@books) {
         if ($current_book->{'ISBN'} eq $new_book->{'ISBN'}){
             $is_duplicate = 1;

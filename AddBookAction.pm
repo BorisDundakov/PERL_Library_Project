@@ -18,21 +18,21 @@ sub execute {
     my $library = Library->new();
     $library->check_for_database();
 
-    my $bookView = BookView->new();
+    my $ui = BookView->new();
 
     #1. Събери параметрите от потребителя като обект Книга
 
-    my $book_object = $bookView->create_book();
+    my $book_object = $ui->collect_book_info();
 
     #1.1 Покажи събранните данни и искай потвърждение от потребителя
 
-    $bookView->display_book($book_object);
-    my $confirmation_answer = $bookView->add_book_decision($book_object);
+    $ui->display_book($book_object);
+    my $add_book_confirmed = $ui->confirm_add_book($book_object);
 
     # TODO: Code part 2: Database stuff, update information
 
     #1.2 Ако данните от портебителя са потвърдени
-    if (defined($confirmation_answer)) {
+    if (defined($add_book_confirmed)) {
         #1.3 Тест за дубликация (вече налична такава книга)
         my $duplicate_test = $library->check_book_duplicate($book_object);
         if (defined($duplicate_test)) {
