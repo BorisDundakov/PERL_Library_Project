@@ -17,12 +17,12 @@ sub new {
 }
 
 sub create_database {
-    open(FileHandle, '>>C:\Users\Bobi\Documents\Desktop\Perl Scripts\Object Oriented Library Project - Perl Objects - Latest\Database.json');
+    open(FileHandle, '>>C:\Users\User\IdeaProjects\PERL_Library_Project\Database.json');
     close FileHandle;
 }
 
 sub check_for_database {
-    my $filename = 'C:\Users\Bobi\Documents\Desktop\Perl Scripts\Object Oriented Library Project - Perl Objects - Latest\Database.json';
+    my $filename = 'C:\Users\User\IdeaProjects\PERL_Library_Project\Database.json';
     if (-e $filename) {
         return(0)
     }
