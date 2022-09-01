@@ -29,8 +29,8 @@ sub check_for_database {
     return(1)
 }
 
-sub load_library_as_hash {
-    # do we really need a subroutine for that?
+
+sub get_books() {
     my $json;
     {
         open(my $fh, 'Database.json') or die("can't open Database.json\n");
@@ -38,15 +38,9 @@ sub load_library_as_hash {
         $json = <$fh>;
         close $fh;
     }
-    my $decoded = decode_json($json);
-    return ($decoded)
+    my @objects_array = decode_json($json);
 
-}
-
-sub library_to_book_objects($) {
     my @books_array;
-
-    my @objects_array = load_library_as_hash();
     my $index = 0;
     while (defined($objects_array[0][$index]))
     {
@@ -71,8 +65,8 @@ sub library_to_book_objects($) {
 
 sub check_book_duplicate($) {
     my $new_book = $_[1];
-    my $lib = load_library_as_hash();
-    my @books = library_to_book_objects($lib);
+    my @books = get_books();
+    #my @books = library_to_book_objects($lib);
     my $is_duplicate = undef;
 
     foreach my $current_book (@books) {

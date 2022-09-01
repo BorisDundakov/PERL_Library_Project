@@ -1,1 +1,79 @@
-[{"publication_date":"20.04.2002","ISBN":"1234567892","n_pages":"202","title":"a","author":"a"},{"author":"a","title":"a","publication_date":"20/05/2001","ISBN":"1234567890","n_pages":"144"},{"publication_date":"20.09.2009","ISBN":"2092092091","n_pages":"209","title":"a","author":"b"},{"author":"a","title":"a","n_pages":"909","publication_date":"20/02/1999","ISBN":"1234567893"},{"title":"a","publication_date":"20/04/2004","n_pages":"204","ISBN":"4044044044","author":"a"},{"author":"a","title":"a","n_pages":"209","ISBN":"2092102110","publication_date":"20.09.2009"},{"author":"A","ISBN":"1111111111","publication_date":"01.11.2011","n_pages":"1011","title":"A"},{"author":"a","title":"a","ISBN":"2022022022","n_pages":"202","publication_date":"20.02.2022"},{"title":"peter pan","publication_date":"19.01.2006","n_pages":"211","ISBN":"2006992000","author":"eats smh"},{"author":"S.Atwell","publication_date":"20.01.2008","ISBN":"2008200611","n_pages":"2008","title":"peter pan"}]
+[
+  {
+    "ISBN": "1234567892",
+    "publication_date": "20.04.2002",
+    "n_pages": "202",
+    "title": "a",
+    "author": "a"
+  },
+  {
+    "title": "a",
+    "author": "a",
+    "ISBN": "1234567890",
+    "publication_date": "20/05/2001",
+    "n_pages": "144"
+  },
+  {
+    "ISBN": "2092092091",
+    "n_pages": "209",
+    "publication_date": "20.09.2009",
+    "title": "a",
+    "author": "b"
+  },
+  {
+    "author": "a",
+    "title": "a",
+    "publication_date": "20/02/1999",
+    "n_pages": "909",
+    "ISBN": "1234567893"
+  },
+  {
+    "ISBN": "4044044044",
+    "n_pages": "204",
+    "publication_date": "20/04/2004",
+    "title": "a",
+    "author": "a"
+  },
+  {
+    "title": "a",
+    "author": "a",
+    "ISBN": "2092102110",
+    "publication_date": "20.09.2009",
+    "n_pages": "209"
+  },
+  {
+    "n_pages": "1011",
+    "publication_date": "01.11.2011",
+    "ISBN": "1111111111",
+    "author": "A",
+    "title": "A"
+  },
+  {
+    "author": "a",
+    "title": "a",
+    "publication_date": "20.02.2022",
+    "n_pages": "202",
+    "ISBN": "2022022022"
+  },
+  {
+    "ISBN": "2006992000",
+    "n_pages": "211",
+    "publication_date": "19.01.2006",
+    "title": "peter pan",
+    "author": "eats smh"
+  },
+  {
+    "title": "peter pan",
+    "author": "S.Atwell",
+    "ISBN": "2008200611",
+    "n_pages": "2008",
+    "publication_date": "20.01.2008"
+  },
+  {
+    "ISBN": "2000199920",
+    "publication_date": "20.01.1999",
+    "n_pages": "199",
+    "title": "a",
+    "author": "b"
+  }
+]
