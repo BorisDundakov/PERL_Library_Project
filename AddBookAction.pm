@@ -3,7 +3,6 @@
 use strict;
 use warnings;
 
-# Usage of Inheritance and Polymorphism
 
 package AddBookAction;
 use BookView;
@@ -11,41 +10,23 @@ use Library;
 use Book;
 use Action;
 our @ISA = qw(Action);
-# AddBookAction inherits from Action
-
 
 sub execute {
-    my $library = Library->new();
-    my $existing_database = $library->check_for_database();
-
-    if(!defined($existing_database)){
-        $library->create_database();
-    }
-
-    my $ui = BookView->new();
-
-    #1. Събери параметрите от потребителя като обект Книга
+    my $library = $_[1];
+    my $ui = $_[2];
 
     my $book_object = $ui->collect_book_info();
-
-    #1.1 Покажи събранните данни и искай потвърждение от потребителя
 
     $ui->display_book($book_object);
     my $add_book_confirmed = $ui->confirm_add_book($book_object);
 
-    # TODO: Code part 2: Database stuff, update information
-
-    #1.2 Ако данните от портебителя са потвърдени
     if (defined($add_book_confirmed)) {
-        #1.3 Тест за дубликация (вече налична такава книга)
         my $book_is_duplicate = $library->check_book_duplicate($book_object);
         if (defined($book_is_duplicate)) {
             print("Book with ISBN $book_object->{'ISBN'} already added to the library\n");
         }
         else {
-            #2. Добави книгата в библиотеката
             $library->add_book($book_object);
-            #3. Уведоми потребителя за резултата от добавянето
             print("Book successfully added to the library!\n")
         }
 

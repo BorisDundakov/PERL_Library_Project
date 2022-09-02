@@ -66,7 +66,6 @@ sub get_books() {
 sub check_book_duplicate($) {
     my $new_book = $_[1];
     my @books = get_books();
-    #my @books = library_to_book_objects($lib);
     my $is_duplicate = undef;
 
     foreach my $current_book (@books) {

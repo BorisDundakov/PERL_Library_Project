@@ -14,18 +14,19 @@ sub execute($) {
 }
 
 sub display_name {
-    # метод наследен от всички наследници на action (polymorphism):
+    # метод наследен + ПРЕНАПИСАН от всички наследници на action (polymorphism):
     # AddBookAction, EditBookAction, FindBookAction, DeleteAction, ExitAction
     # returns menu name
 }
 
 sub get_class_name {
+    # метод наследен от всички наследници
     return $_[0];
 }
 
 
 sub should_exit() {
-    # метод наследен от всички наследници на action (polymorphism):
+    # метод наследен + ПРЕНАПИСАН от всички наследници на action (polymorphism):
     # AddBookAction, EditBookAction, FindBookAction, DeleteAction, ExitAction
     # returns 1/0
 }
