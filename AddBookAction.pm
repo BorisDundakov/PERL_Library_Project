@@ -9,11 +9,13 @@ use BookView;
 use Library;
 use Book;
 use Action;
+use Status;
 our @ISA = qw(Action);
 
 sub execute {
     my $library = $_[1];
     my $ui = $_[2];
+    my $status = 0;
 
     my $book_object = $ui->collect_book_info();
 
@@ -21,19 +23,19 @@ sub execute {
     my $add_book_confirmed = $ui->confirm_add_book($book_object);
 
     if (defined($add_book_confirmed)) {
-        my $book_is_duplicate = $library->check_book_duplicate($book_object);
-        if (defined($book_is_duplicate)) {
-            print("Book with ISBN $book_object->{'ISBN'} already added to the library\n");
+        $status = $library->add_book($book_object);
+        if ($status == 1) {
+            Status->new(Status::successful_operation);
+            return;
         }
-        else {
-            $library->add_book($book_object);
-            print("Book successfully added to the library!\n")
-        }
-
+        Status->new(Status::book_duplicate($book_object->{'ISBN'}));
     }
     else {
-        print("Operation cancelled - Did not add the book to the library!\n");
+        Status->new(Status::cancelled_operation);
+
     }
+    return ($status);
+
 }
 
 

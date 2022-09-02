@@ -63,23 +63,19 @@ sub get_books() {
     return(@books_array)
 }
 
-sub check_book_duplicate($) {
+sub add_book($) {
     my $new_book = $_[1];
     my @books = get_books();
-    my $is_duplicate = undef;
+    my $add_book_status = 1;
 
     foreach my $current_book (@books) {
         if ($current_book->{'ISBN'} eq $new_book->{'ISBN'}){
-            $is_duplicate = 1;
-            last;
+            $add_book_status = 0;
+            return($add_book_status);
         }
     }
-    return($is_duplicate);
-
-}
 
 
-sub add_book() {
     my $coder = JSON->new->utf8;
 
     $coder->allow_blessed();
@@ -110,7 +106,8 @@ sub add_book() {
         print $fh ($output);
         print($fh "]");
         close($fh);
-    }
+    };
+    return($add_book_status);
 }
 
 # КОДЪТ НАДОЛУ НЕ Е ВАЖЕН И НЕ Е ПРЕРАБОТВАН!

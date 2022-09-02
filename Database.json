@@ -2,42 +2,42 @@
   {
     "n_pages": "202",
     "author": "a",
-    "title": "a",
     "publication_date": "20.04.2002",
+    "title": "a",
     "ISBN": "1234567892"
   },
   {
-    "author": "a",
     "n_pages": "144",
+    "author": "a",
     "publication_date": "20/05/2001",
     "title": "a",
     "ISBN": "1234567890"
   },
   {
-    "publication_date": "20.09.2009",
     "title": "a",
-    "n_pages": "209",
+    "publication_date": "20.09.2009",
     "author": "b",
+    "n_pages": "209",
     "ISBN": "2092092091"
   },
   {
-    "ISBN": "1234567893",
-    "n_pages": "909",
-    "author": "a",
+    "title": "a",
     "publication_date": "20/02/1999",
-    "title": "a"
+    "author": "a",
+    "n_pages": "909",
+    "ISBN": "1234567893"
   },
   {
-    "ISBN": "4044044044",
     "n_pages": "204",
-    "author": "a",
     "publication_date": "20/04/2004",
-    "title": "a"
+    "title": "a",
+    "author": "a",
+    "ISBN": "4044044044"
   },
   {
     "ISBN": "2092102110",
-    "title": "a",
     "publication_date": "20.09.2009",
+    "title": "a",
     "author": "a",
     "n_pages": "209"
   },
@@ -50,37 +50,16 @@
   },
   {
     "ISBN": "2022022022",
-    "publication_date": "20.02.2022",
-    "title": "a",
+    "n_pages": "202",
     "author": "a",
-    "n_pages": "202"
-  },
-  {
-    "ISBN": "2006992000",
-    "title": "peter pan",
-    "publication_date": "19.01.2006",
-    "author": "eats smh",
-    "n_pages": "211"
-  },
-  {
-    "ISBN": "2008200611",
-    "author": "S.Atwell",
-    "n_pages": "2008",
-    "publication_date": "20.01.2008",
-    "title": "peter pan"
-  },
-  {
-    "ISBN": "2000199920",
-    "author": "b",
-    "n_pages": "199",
     "title": "a",
-    "publication_date": "20.01.1999"
+    "publication_date": "20.02.2022"
   },
   {
-    "ISBN": "2092102117",
-    "title": "a",
-    "publication_date": "20.09.2009",
-    "author": "b",
-    "n_pages": "209"
+    "ISBN": "1234567654",
+    "n_pages": "202",
+    "publication_date": "20.02.2022",
+    "author": "a",
+    "title": "a"
   }
 ]
