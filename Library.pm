@@ -66,7 +66,7 @@ sub get_books() {
 sub add_book($) {
     my $new_book = $_[1];
     my @books = get_books();
-    my $add_book_status = 1;
+    my $add_book_status;
 
     foreach my $current_book (@books) {
         if ($current_book->{'ISBN'} eq $new_book->{'ISBN'}){
@@ -74,7 +74,6 @@ sub add_book($) {
             return($add_book_status);
         }
     }
-
 
     my $coder = JSON->new->utf8;
 
@@ -96,6 +95,7 @@ sub add_book($) {
         open my $fh, ">", "Database.json";
         print $fh ($updated_database);
         close($fh);
+        $add_book_status = 1;
 
     } or eval {
 
@@ -106,6 +106,7 @@ sub add_book($) {
         print $fh ($output);
         print($fh "]");
         close($fh);
+        $add_book_status = 1;
     };
     return($add_book_status);
 }
@@ -118,7 +119,7 @@ sub find_book {
     my $indicator = $search_criteria[0][0];
     my $value = $search_criteria[0][1];
 
-    my $decoded = load_library_as_hash();
+    my $decoded = get_books();
 
     my @books_list = $decoded;
     foreach my $vals (@books_list) {
@@ -136,7 +137,7 @@ sub edit_book {
     my $indicator = $_[1];
     my $value = $_[2];
 
-    my $decoded = load_library_as_hash();
+    my $decoded = get_books();
 
     my @books_list = $decoded;
     foreach my $vals (@books_list) {
@@ -159,7 +160,7 @@ sub delete_book() {
     my $indicator = $search_criteria[0][0];
     my $value = $search_criteria[0][1];
 
-    my $decoded = load_library_as_hash();
+    my $decoded = get_books();
     foreach my $vals (@$decoded) {
         $del_counter += 1;
         if (!defined($indicator)) {

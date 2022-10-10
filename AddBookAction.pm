@@ -30,6 +30,7 @@ sub execute {
         }
         Status->new(Status::book_duplicate($book_object->{'ISBN'}));
     }
+
     else {
         Status->new(Status::cancelled_operation);
 
