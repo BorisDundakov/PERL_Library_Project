@@ -12,15 +12,15 @@ sub new {
 }
 
 sub successful_operation {
-    print("Book successfully added to the library!\n");
+    return("Book successfully added to the library!\n");
 }
 
 sub cancelled_operation {
-    print("Operation cancelled - Did not add the book to the library!\n");
+    return("Operation cancelled - Did not add the book to the library!\n");
 }
 sub book_duplicate($) {
-    my $ISBN = $_[0];
-    print("Book with ISBN $ISBN already added to the library\n");
+    my $ISBN = $_[1];
+    return("Book with ISBN $ISBN already added to the library\n");
 }
 
 1;

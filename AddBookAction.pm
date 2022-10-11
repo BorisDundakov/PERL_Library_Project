@@ -15,7 +15,8 @@ our @ISA = qw(Action);
 sub execute {
     my $library = $_[1];
     my $ui = $_[2];
-    my $status = 0;
+    my $status;
+    my $message = Status->new();
 
     my $book_object = $ui->collect_book_info();
 
@@ -24,18 +25,17 @@ sub execute {
 
     if (defined($add_book_confirmed)) {
         $status = $library->add_book($book_object);
-        if ($status == 1) {
-            Status->new(Status::successful_operation);
-            return;
+        if ($status != 0) {
+            print($message->successful_operation);
         }
-        Status->new(Status::book_duplicate($book_object->{'ISBN'}));
+        else {
+            print($message->book_duplicate($book_object->{'ISBN'}))
+        }
     }
-
     else {
-        Status->new(Status::cancelled_operation);
+        print($message->cancelled_operation)
 
     }
-    return ($status);
 
 }
 

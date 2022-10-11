@@ -16,6 +16,7 @@ sub new {
     return $self;
 }
 
+
 sub create_database {
     open(FileHandle, '>>C:\Users\User\IdeaProjects\PERL_Library_Project\Database.json');
     close FileHandle;
@@ -68,6 +69,16 @@ sub add_book($) {
     my @books = get_books();
     my $add_book_status;
 
+
+    # In Perl:
+    # The number 0, the strings '0' and '', the empty list "()", and "undef"
+    # are all false in a boolean context. All other values are true.
+    #     Negation of a true value by "!" or "not" returns a special false
+    #     value. When evaluated as a string it is treated as '', but as a number, it is treated as 0.
+    #
+    # From perlsyn under "Truth and Falsehood".
+
+
     foreach my $current_book (@books) {
         if ($current_book->{'ISBN'} eq $new_book->{'ISBN'}){
             $add_book_status = 0;
@@ -111,7 +122,7 @@ sub add_book($) {
     return($add_book_status);
 }
 
-# КОДЪТ НАДОЛУ НЕ Е ВАЖЕН И НЕ Е ПРЕРАБОТВАН!
+# КОДЪТ НАДОЛУ НЕ Е ПРЕРАБОТВАН!
 
 sub find_book {
     my $book_to_return;
