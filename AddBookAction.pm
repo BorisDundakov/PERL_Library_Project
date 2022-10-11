@@ -25,10 +25,10 @@ sub execute {
 
     if (defined($add_book_confirmed)) {
         $status = $library->add_book($book_object);
-        if ($status != 0) {
+        if ($status == 1) {
             print($message->successful_operation);
         }
-        else {
+        elsif ($status == 0) {
             print($message->book_duplicate($book_object->{'ISBN'}))
         }
     }
