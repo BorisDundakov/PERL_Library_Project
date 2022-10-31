@@ -65,6 +65,7 @@ sub get_books() {
 }
 
 sub add_book($) {
+    # should return the reason for the status
     my $new_book = $_[1];
     my @books = get_books();
     my $add_book_status;
@@ -82,6 +83,8 @@ sub add_book($) {
     foreach my $current_book (@books) {
         if ($current_book->{'ISBN'} eq $new_book->{'ISBN'}){
             $add_book_status = 0;
+            #$add_book_status = "Book with ISBN 12345 already exists in the library.
+            #Make sure that the book you are trying to add has correct ISBN number."
             return($add_book_status);
         }
     }
