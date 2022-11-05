@@ -131,6 +131,9 @@ sub add_book($) {
         print($fh "]");
         close($fh);
         $add_book_status = 1;
+    }
+    or eval{
+        return(Status->new(0, "Cannot open the file!"))
     };
     return Status->new(1, "Book successfully added to the library!\n");
 }
