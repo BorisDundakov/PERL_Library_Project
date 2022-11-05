@@ -132,11 +132,13 @@ sub confirm_add_book($) {
 }
 
 sub display_notification($){
-    my $confirmation_result = $_[0];
-    if(!defined($confirmation_result)){
-        print("Operation cancelled - Did not add the book to the library!\n")
-    }
-    print("Book successfully added to the library!\n")
+    my $status = $_[0];
+    print($status);
+
+    # if(!defined($status)){
+    #     print("Operation cancelled - Did not add the book to the library!\n")
+    # }
+    # print("Book successfully added to the library!\n")
 }
 
 sub display_successful_addition($){

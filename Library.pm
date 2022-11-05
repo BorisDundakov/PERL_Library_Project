@@ -9,6 +9,9 @@ use Try::Tiny;
 use JSON::Parse 'json_file_to_perl';
 use Data::Structure::Util qw(unbless);
 
+use Status;
+
+
 sub new {
     my $class = shift;
     my $self = {};
@@ -67,9 +70,9 @@ sub get_books() {
 sub add_book($) {
     # should return the reason for the status
     my $new_book = $_[1];
+    my $ISBN = $new_book->{'ISBN'};
     my @books = get_books();
     my $add_book_status;
-
 
     # In Perl:
     # The number 0, the strings '0' and '', the empty list "()", and "undef"
@@ -80,12 +83,17 @@ sub add_book($) {
     # From perlsyn under "Truth and Falsehood".
 
 
+    #TODO: Затова е добре причината за статуса да се връща от самия add_book метод и да е конкретна.
+    #TODO: Въпрос-> тоест add_book метода хем се опитва да добави книгата, хем връща какво се случило??
+
+    #Методът add_book (ТРЯБВА ДА!??) връща обект от тип статус (а не число)
+    # и в зависимост от това какво се обърка може да му сложи правилното съобщение.
+    # return Status->new(true, “Book successfully added”);
     foreach my $current_book (@books) {
+        # вътрешната проверка на add_book за duplicate
         if ($current_book->{'ISBN'} eq $new_book->{'ISBN'}){
-            $add_book_status = 0;
-            #$add_book_status = "Book with ISBN 12345 already exists in the library.
-            #Make sure that the book you are trying to add has correct ISBN number."
-            return($add_book_status);
+            return Status->new(0,"Book with ISBN $ISBN already exists in the library.
+            Make sure that the book you are trying to add has correct ISBN number.\n");
         }
     }
 
@@ -106,6 +114,7 @@ sub add_book($) {
         push @$perl_list_of_books, $book_instance;
 
         my $updated_database = $coder->encode($perl_list_of_books);
+        #todo: what if the program breaks here
         open my $fh, ">", "Database.json";
         print $fh ($updated_database);
         close($fh);
@@ -115,14 +124,14 @@ sub add_book($) {
 
         # output is the first Database entry in this case. The Database was completely empty before the operation
         my $output = $coder->encode($book_instance);
-        open my $fh, ">", "Database.json";
+        open my $fh, ">", "Database.json";todo: #what if the program breaks here
         print($fh "[");
         print $fh ($output);
         print($fh "]");
         close($fh);
         $add_book_status = 1;
     };
-    return($add_book_status);
+    return Status->new(1, "Book successfully added to the library!\n");
 }
 
 # КОДЪТ НАДОЛУ НЕ Е ПРЕРАБОТВАН!
