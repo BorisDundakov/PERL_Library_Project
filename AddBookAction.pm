@@ -9,6 +9,7 @@ use BookView;
 use Library;
 use Book;
 use Action;
+use Status;
 our @ISA = qw(Action);
 
 sub execute {
@@ -28,10 +29,14 @@ sub execute {
             print($status->get_message());
         }
         else {
-            print("Error!" + $status->get_message());
+            print("Error! ", $status->get_message());
         }
     }
-
+    # Operation canceled case
+    else{
+        $status = Status->new(0,"Operation cancelled - Did not add the book to the library!\n");
+        print("Error! ", $status->get_message());
+    }
 }
 
 

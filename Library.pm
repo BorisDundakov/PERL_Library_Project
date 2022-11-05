@@ -69,6 +69,7 @@ sub get_books() {
 
 sub add_book($) {
     # should return the reason for the status
+    # if operation is cancelled, the method will not even be called
     my $new_book = $_[1];
     my $ISBN = $new_book->{'ISBN'};
     my @books = get_books();
@@ -92,8 +93,8 @@ sub add_book($) {
     foreach my $current_book (@books) {
         # вътрешната проверка на add_book за duplicate
         if ($current_book->{'ISBN'} eq $new_book->{'ISBN'}){
-            return Status->new(0,"Book with ISBN $ISBN already exists in the library.
-            Make sure that the book you are trying to add has correct ISBN number.\n");
+            return Status->new(0,"Book with ISBN $ISBN already exists in the library.\n
+             Make sure that the book you are trying to add has correct ISBN number.\n");
         }
     }
 
