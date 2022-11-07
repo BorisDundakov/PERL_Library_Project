@@ -89,7 +89,7 @@ sub add_book($) {
 
     #Методът add_book (ТРЯБВА ДА!??) връща обект от тип статус (а не число)
     # и в зависимост от това какво се обърка може да му сложи правилното съобщение.
-    # return Status->new(true, “Book successfully added”);
+
     foreach my $current_book (@books) {
         # вътрешната проверка на add_book за duplicate
         if ($current_book->{'ISBN'} eq $new_book->{'ISBN'}){
